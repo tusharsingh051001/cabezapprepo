@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Platform, Text, View, StyleSheet } from "react-native";
+import { Platform, Text, View, StyleSheet, SafeAreaView } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import * as Location from "expo-location";
 
@@ -32,29 +32,31 @@ const Index = () => {
   }
 
   return (
-    <View style={styles.container}>
-      {location ? (
-        <MapView
-          style={styles.map}
-          initialRegion={{
-            latitude: location.coords.latitude,
-            longitude: location.coords.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-        >
-          <Marker
-            coordinate={{
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        {location ? (
+          <MapView
+            style={styles.map}
+            initialRegion={{
               latitude: location.coords.latitude,
               longitude: location.coords.longitude,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
             }}
-            title={"Your Location"}
-          />
-        </MapView>
-      ) : (
-        <Text>{text}</Text>
-      )}
-    </View>
+          >
+            <Marker
+              coordinate={{
+                latitude: location.coords.latitude,
+                longitude: location.coords.longitude,
+              }}
+              title={"Your Location"}
+            />
+          </MapView>
+        ) : (
+          <Text>{text}</Text>
+        )}
+      </View>
+    </SafeAreaView>
   );
 };
 
