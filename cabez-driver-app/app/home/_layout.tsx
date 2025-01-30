@@ -12,7 +12,7 @@ const HomeLayout = () => {
         tabBarInactiveTintColor: "gray",
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: "green",
+          backgroundColor: "white",
           paddingBottom: 10,
           paddingTop: 10,
           height: 60,
@@ -25,7 +25,7 @@ const HomeLayout = () => {
           title: "Home",
           tabBarLabel: "Home",
           tabBarIcon: ({ color, size }) => (
-            <Entypo name="home" size={size} color={color} />
+            <Entypo name="home" size={size} color="orange" />
           ),
         }}
       />
@@ -35,7 +35,7 @@ const HomeLayout = () => {
           title: "Attendance",
           tabBarLabel: "Attendance",
           tabBarIcon: ({ color, size }) => (
-            <Entypo name="paper-plane" size={24} color={color} />
+            <Entypo name="paper-plane" size={24} color="orange" />
           ),
         }}
       />
@@ -45,7 +45,7 @@ const HomeLayout = () => {
           title: "Profile",
           tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome6 name="person" size={24} color={color} />
+            <FontAwesome6 name="person" size={24} color="orange" />
           ),
         }}
       />
@@ -55,7 +55,7 @@ const HomeLayout = () => {
           title: "Contact Us",
           tabBarLabel: "Contact Us",
           tabBarIcon: ({ color, size }) => (
-            <Entypo name="phone" size={24} color={color} />
+            <Entypo name="phone" size={24} color="orange" />
           ),
         }}
       />
