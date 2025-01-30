@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
-import { useSelector } from "react-redux";
 import driverData from "@/data/driverData";
 
 type DriverDataType = {
@@ -15,7 +14,6 @@ type DriverDataType = {
 };
 
 const driverProfile = () => {
-  const selectedTab = useSelector((state: any) => state.tab.profileTab);
   const [data, setData] = useState<DriverDataType>(
     driverData
   );
