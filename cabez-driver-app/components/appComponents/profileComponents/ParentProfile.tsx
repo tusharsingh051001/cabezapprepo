@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
+import { useSelector } from "react-redux";
 import personalData from "@/data/personalData";
 
 type PersonalDataType = {
@@ -17,6 +18,7 @@ type PersonalDataType = {
 };
 
 const ParentProfile = () => {
+  // const selectedTab = useSelector((state: any) => state.tab.profileTab);
   const [data, setData] = useState<PersonalDataType>(
     personalData
   );
