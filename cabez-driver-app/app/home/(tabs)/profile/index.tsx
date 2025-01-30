@@ -162,7 +162,6 @@
 
 import React, { useState } from "react";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { useDispatch } from "react-redux";
 import DriverProfile from "@/components/appComponents/profileComponents/DriverProfile";
 import ParentProfile from "@/components/appComponents/profileComponents/ParentProfile";
 import { SafeAreaView } from "react-native-safe-area-context";
