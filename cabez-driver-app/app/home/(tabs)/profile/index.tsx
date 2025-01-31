@@ -8,7 +8,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const Profile = () => {
   const [openTab, setOpenTab] = useState(null);
 
-  const toggleAccordion = (tab) => {
+  const toggleAccordion = (tab: any) => {
     setOpenTab(openTab === tab ? null : tab);
   };
 
@@ -16,7 +16,10 @@ const Profile = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.tabContainer}>
         {/* Parent Profile */}
-        <TouchableOpacity onPress={() => toggleAccordion("parent")} style={styles.tab}>
+        <TouchableOpacity
+          onPress={() => toggleAccordion("parent")}
+          style={styles.tab}
+        >
           <Text style={styles.tabTitle}>My Details</Text>
         </TouchableOpacity>
         <Collapsible collapsed={openTab !== "parent"}>
@@ -26,7 +29,10 @@ const Profile = () => {
         </Collapsible>
 
         {/* Driver Profile */}
-        <TouchableOpacity onPress={() => toggleAccordion("driver")} style={styles.tab}>
+        <TouchableOpacity
+          onPress={() => toggleAccordion("driver")}
+          style={styles.tab}
+        >
           <Text style={styles.tabTitle}>My Driver Details</Text>
         </TouchableOpacity>
         <Collapsible collapsed={openTab !== "driver"}>

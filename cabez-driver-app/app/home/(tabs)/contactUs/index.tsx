@@ -9,7 +9,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 const Profile = () => {
   const [openTab, setOpenTab] = useState(null);
 
-  const toggleAccordion = (tab) => {
+  const toggleAccordion = (tab: any) => {
     setOpenTab(openTab === tab ? null : tab);
   };
 
@@ -17,7 +17,10 @@ const Profile = () => {
     <SafeAreaView style={styles.container}>
       <View style={styles.tabContainer}>
         {/* Terms and Conditions */}
-        <TouchableOpacity onPress={() => toggleAccordion("tac")} style={styles.tab}>
+        <TouchableOpacity
+          onPress={() => toggleAccordion("tac")}
+          style={styles.tab}
+        >
           <Text style={styles.tabTitle}>Terms and Conditions</Text>
         </TouchableOpacity>
         <Collapsible collapsed={openTab !== "tac"}>
@@ -27,7 +30,10 @@ const Profile = () => {
         </Collapsible>
 
         {/* Contact Us */}
-        <TouchableOpacity onPress={() => toggleAccordion("contact")} style={styles.tab}>
+        <TouchableOpacity
+          onPress={() => toggleAccordion("contact")}
+          style={styles.tab}
+        >
           <Text style={styles.tabTitle}>Contact Us</Text>
         </TouchableOpacity>
         <Collapsible collapsed={openTab !== "contact"}>
@@ -37,7 +43,10 @@ const Profile = () => {
         </Collapsible>
 
         {/* FAQs */}
-        <TouchableOpacity onPress={() => toggleAccordion("faq")} style={styles.tab}>
+        <TouchableOpacity
+          onPress={() => toggleAccordion("faq")}
+          style={styles.tab}
+        >
           <Text style={styles.tabTitle}>FAQs</Text>
         </TouchableOpacity>
         <Collapsible collapsed={openTab !== "faq"}>
@@ -74,7 +83,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderLeftWidth: 6,
-    borderLeftColor: "orange", 
+    borderLeftColor: "orange",
   },
   tabTitle: {
     fontSize: 16,
