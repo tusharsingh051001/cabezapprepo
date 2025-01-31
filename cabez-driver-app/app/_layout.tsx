@@ -1,20 +1,3 @@
-// import store from "@/store/store";
-// import { Stack } from "expo-router";
-// import { StatusBar } from "react-native";
-// import { View } from "react-native";
-// import { Provider } from "react-redux";
-
-// export default function RootLayout() {
-//   return (
-//     <Provider store={store}>
-//       <View style={{ flex: 1 }}>
-//         <StatusBar hidden={false} barStyle="dark-content" />
-//         <Stack screenOptions={{ headerShown: false }} />
-//       </View>
-//     </Provider>
-//   );
-// }
-
 import {
   DarkTheme,
   DefaultTheme,
@@ -67,9 +50,7 @@ export default function RootLayout() {
     <SafeAreaView style={styles.container}>
       <ApolloProvider client={client}>
         <Provider store={store}>
-          <ThemeProvider
-            value={colorScheme === "dark" ? DarkTheme : DefaultTheme}
-          >
+          <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
             <StatusBar hidden={false} barStyle="dark-content" />
             <Stack screenOptions={{ headerShown: false }}>
               <Stack.Screen name="index" options={{ headerShown: false }} />

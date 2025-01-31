@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View, useColorScheme } from "react-native";
 import Collapsible from "react-native-collapsible";
 import Tac from "@/components/appComponents/contactComponents/tac";
 import Contact from "@/components/appComponents/contactComponents/contact";
@@ -8,23 +8,26 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 const Profile = () => {
   const [openTab, setOpenTab] = useState(null);
+  const colorScheme = useColorScheme(); // Detect light or dark mode
+
+  const isDarkMode = colorScheme === "dark";
 
   const toggleAccordion = (tab: any) => {
     setOpenTab(openTab === tab ? null : tab);
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, { backgroundColor: isDarkMode ? "#121212" : "#F9F9F9" }]}>
       <View style={styles.tabContainer}>
         {/* Terms and Conditions */}
         <TouchableOpacity
           onPress={() => toggleAccordion("tac")}
-          style={styles.tab}
+          style={[styles.tab, isDarkMode && styles.darkTab]}
         >
-          <Text style={styles.tabTitle}>Terms and Conditions</Text>
+          <Text style={[styles.tabTitle, isDarkMode && styles.darkTabTitle]}>Terms and Conditions</Text>
         </TouchableOpacity>
         <Collapsible collapsed={openTab !== "tac"}>
-          <View style={styles.profileContainer}>
+          <View style={[styles.profileContainer, isDarkMode && styles.darkProfileContainer]}>
             <Tac />
           </View>
         </Collapsible>
@@ -32,12 +35,12 @@ const Profile = () => {
         {/* Contact Us */}
         <TouchableOpacity
           onPress={() => toggleAccordion("contact")}
-          style={styles.tab}
+          style={[styles.tab, isDarkMode && styles.darkTab]}
         >
-          <Text style={styles.tabTitle}>Contact Us</Text>
+          <Text style={[styles.tabTitle, isDarkMode && styles.darkTabTitle]}>Contact Us</Text>
         </TouchableOpacity>
         <Collapsible collapsed={openTab !== "contact"}>
-          <View style={styles.profileContainer}>
+          <View style={[styles.profileContainer, isDarkMode && styles.darkProfileContainer]}>
             <Contact />
           </View>
         </Collapsible>
@@ -45,12 +48,12 @@ const Profile = () => {
         {/* FAQs */}
         <TouchableOpacity
           onPress={() => toggleAccordion("faq")}
-          style={styles.tab}
+          style={[styles.tab, isDarkMode && styles.darkTab]}
         >
-          <Text style={styles.tabTitle}>FAQs</Text>
+          <Text style={[styles.tabTitle, isDarkMode && styles.darkTabTitle]}>FAQs</Text>
         </TouchableOpacity>
         <Collapsible collapsed={openTab !== "faq"}>
-          <View style={styles.profileContainer}>
+          <View style={[styles.profileContainer, isDarkMode && styles.darkProfileContainer]}>
             <Faq />
           </View>
         </Collapsible>
@@ -71,9 +74,9 @@ const styles = StyleSheet.create({
   },
   tab: {
     padding: 15,
-    backgroundColor: "white",
     borderRadius: 10,
     borderWidth: 1,
+    backgroundColor: "white",
     borderColor: "#E0E0E0",
     shadowColor: "#000",
     shadowOpacity: 0.1,
@@ -92,9 +95,9 @@ const styles = StyleSheet.create({
   },
   profileContainer: {
     padding: 15,
-    backgroundColor: "white",
     borderRadius: 10,
     borderWidth: 1,
+    backgroundColor: "white",
     borderColor: "#E0E0E0",
     shadowColor: "#000",
     shadowOpacity: 0.1,
@@ -102,6 +105,19 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 2,
     marginTop: 5,
+  },
+
+  // Dark Mode Styles
+  darkTab: {
+    backgroundColor: "#1E1E1E",
+    borderColor: "#333",
+  },
+  darkTabTitle: {
+    color: "#FFF",
+  },
+  darkProfileContainer: {
+    backgroundColor: "#1E1E1E",
+    borderColor: "#333",
   },
 });
 
