@@ -1,18 +1,21 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import React from "react";
 import { Tabs } from "expo-router";
 import Entypo from "@expo/vector-icons/Entypo";
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import { useColorScheme } from "react-native"; // Get system theme
 
 const HomeLayout = () => {
+  const colorScheme = useColorScheme(); // Detects "light" or "dark"
+
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: "black",
+        tabBarActiveTintColor: colorScheme === "dark" ? "white" : "black",
         tabBarInactiveTintColor: "gray",
         headerShown: false,
         tabBarStyle: {
-          backgroundColor: "white",
+          backgroundColor: colorScheme === "dark" ? "#1c1c1c" : "white", // Dark mode color
           paddingBottom: 10,
           paddingTop: 10,
           height: 60,
@@ -24,7 +27,7 @@ const HomeLayout = () => {
         options={{
           title: "Home",
           tabBarLabel: "Home",
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ size }) => (
             <Entypo name="home" size={size} color="orange" />
           ),
         }}
@@ -34,7 +37,7 @@ const HomeLayout = () => {
         options={{
           title: "Attendance",
           tabBarLabel: "Attendance",
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ size }) => (
             <Entypo name="paper-plane" size={24} color="orange" />
           ),
         }}
@@ -44,7 +47,7 @@ const HomeLayout = () => {
         options={{
           title: "Profile",
           tabBarLabel: "Profile",
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ size }) => (
             <FontAwesome6 name="person" size={24} color="orange" />
           ),
         }}
@@ -54,7 +57,7 @@ const HomeLayout = () => {
         options={{
           title: "Contact Us",
           tabBarLabel: "Contact Us",
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ size }) => (
             <Entypo name="phone" size={24} color="orange" />
           ),
         }}

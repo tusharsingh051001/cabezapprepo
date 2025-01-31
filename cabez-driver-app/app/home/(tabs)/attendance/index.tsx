@@ -6,6 +6,7 @@ import {
   ScrollView,
   ActivityIndicator,
   SafeAreaView,
+  useColorScheme,
 } from 'react-native';
 
 export default function HistoryScreen() {
@@ -20,6 +21,7 @@ export default function HistoryScreen() {
   const [historyData, setHistoryData] = useState<HistoryItem[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const colorScheme = useColorScheme(); // Detect light or dark mode
 
   const dummyData = [
     {
@@ -53,18 +55,30 @@ export default function HistoryScreen() {
   if (loading) {
     return (
       <SafeAreaView style={styles.loaderContainer}>
-        <ActivityIndicator size="large" color="#0000ff" />
+        <ActivityIndicator size="large" color={colorScheme === "dark" ? "#FF9800" : "#0000FF"} />
       </SafeAreaView>
     );
   }
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView
+      style={[
+        styles.safeArea,
+        { backgroundColor: colorScheme === "dark" ? "#121212" : "#F9F9F9" },
+      ]}
+    >
       <ScrollView style={styles.container}>
-        <Text style={styles.title}>History</Text>
+        <Text
+          style={[
+            styles.title,
+            { color: colorScheme === "dark" ? "#FFFFFF" : "#000000" },
+          ]}
+        >
+          History
+        </Text>
         {error || historyData.length === 0 ? (
           <View style={styles.fallbackContainer}>
-            <Text style={styles.fallbackText}>
+            <Text style={[styles.fallbackText, { color: colorScheme === "dark" ? "#AAA" : "#999" }]}>
               No data available. Try later.
             </Text>
           </View>
@@ -74,23 +88,47 @@ export default function HistoryScreen() {
               key={index}
               style={[
                 styles.card,
-                item.status === "Present" ? styles.completedCard : styles.canceledCard,
+                {
+                  backgroundColor: colorScheme === "dark" ? "#1E1E1E" : "#FFF",
+                  borderLeftColor: item.status === "Present" ? "#4CAF50" : "#F44336",
+                },
               ]}
             >
               <Text
-                style={
-                  item.status === "Present"
-                    ? styles.completedText
-                    : styles.canceledText
-                }
+                style={{
+                  color: item.status === "Present" ? "#4CAF50" : "#F44336",
+                  fontWeight: "bold",
+                  marginBottom: 8,
+                }}
               >
                 {item.status}
               </Text>
               <View style={styles.routeContainer}>
-                <Text style={styles.routeText}>{item.startLocation}</Text>
-                <Text style={styles.routeText}>{item.endLocation}</Text>
+                <Text
+                  style={[
+                    styles.routeText,
+                    { color: colorScheme === "dark" ? "#EEE" : "#333" },
+                  ]}
+                >
+                  {item.startLocation}
+                </Text>
+                <Text
+                  style={[
+                    styles.routeText,
+                    { color: colorScheme === "dark" ? "#EEE" : "#333" },
+                  ]}
+                >
+                  {item.endLocation}
+                </Text>
               </View>
-              <Text style={styles.date}>{item.date}</Text>
+              <Text
+                style={[
+                  styles.date,
+                  { color: colorScheme === "dark" ? "#AAA" : "#999" },
+                ]}
+              >
+                {item.date}
+              </Text>
             </View>
           ))
         )}
@@ -102,7 +140,6 @@ export default function HistoryScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: "#F9F9F9",
   },
   container: {
     flex: 1,
@@ -122,11 +159,9 @@ const styles = StyleSheet.create({
   },
   fallbackText: {
     fontSize: 18,
-    color: "#999",
     textAlign: "center",
   },
   card: {
-    backgroundColor: "#FFF",
     borderRadius: 8,
     padding: 16,
     marginBottom: 16,
@@ -135,41 +170,21 @@ const styles = StyleSheet.create({
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 2 },
     elevation: 4,
-  },
-  completedCard: {
-    borderLeftColor: "#4CAF50",
     borderLeftWidth: 4,
-  },
-  canceledCard: {
-    borderLeftColor: "#F44336",
-    borderLeftWidth: 4,
-  },
-  completedText: {
-    color: "#4CAF50",
-    fontWeight: "bold",
-    marginBottom: 8,
-  },
-  canceledText: {
-    color: "#F44336",
-    fontWeight: "bold",
-    marginBottom: 8,
   },
   routeContainer: {
     marginBottom: 8,
   },
   routeText: {
     fontSize: 16,
-    color: "#333",
   },
   date: {
     fontSize: 14,
-    color: "#999",
   },
   loaderContainer: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F9F9F9",
   },
 });
-//hiiiiii oranaav
+
