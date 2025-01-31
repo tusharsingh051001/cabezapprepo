@@ -2,6 +2,7 @@ import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
+  useNavigation,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
@@ -18,7 +19,7 @@ import PoppinsMedium from "@/assets/fonts/Poppins-Medium.otf";
 import { useColorScheme } from "@/components/useColorScheme";
 import { Provider } from "react-redux";
 import store from "@/store/store";
-import { SafeAreaView, StyleSheet } from "react-native";
+import { SafeAreaView, StatusBar, StyleSheet } from "react-native";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -32,6 +33,8 @@ export default function RootLayout() {
     PoppinsSemiBold: PoppinsSemiBold,
     PoppinsMedium: PoppinsMedium,
   });
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     if (loaded) {
@@ -48,8 +51,9 @@ export default function RootLayout() {
       <ApolloProvider client={client}>
         <Provider store={store}>
           <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+            <StatusBar hidden={false} barStyle="dark-content" />
             <Stack screenOptions={{ headerShown: false }}>
-              <Stack.Screen name="index" />
+              <Stack.Screen name="index" options={{ headerShown: false }} />
             </Stack>
           </ThemeProvider>
         </Provider>

@@ -12,7 +12,7 @@ const Profile = () => {
 
   const isDarkMode = colorScheme === "dark";
 
-  const toggleAccordion = (tab) => {
+  const toggleAccordion = (tab: any) => {
     setOpenTab(openTab === tab ? null : tab);
   };
 
