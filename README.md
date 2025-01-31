@@ -14,24 +14,23 @@ CabeZapp is a cutting-edge application designed to simplify and enhance your cab
 
 To install CabeZapp, follow these steps:
 
-- Clone the repository:
+1. Clone the repository:
 
-```bash
-git clone https://github.com/yourusername/cabezapprepo.git
-```
+    ```bash
+        git clone https://github.com/yourusername/cabezapprepo.git
+    ```
 
-- Navigate to the project directory:
+2. Navigate to the project directory:
 
-```bash
-cd cabezapprepo
+    ```bash
+        cd cabezapprepo
+    ```
 
-```
+3. Install the dependencies:
 
-- Install the dependencies:
-
-```bash
-npm install
-```
+    ```bash
+    npm install
+    ```
 
 ## Usage
 
