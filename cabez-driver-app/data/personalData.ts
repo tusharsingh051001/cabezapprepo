@@ -1,8 +1,8 @@
 const personalData = {
-  firstName: "John",
-  lastName: "Doe",
-  age: 30,
-  email: "john.doe@example.com",
+  firstName: "Chaitanya",
+  lastName: "Kotnala",
+  age: 23,
+  email: "ckotnala@example.com",
   phoneNumber: "+1234567890",
   address: {
     street: "123 Main St",
